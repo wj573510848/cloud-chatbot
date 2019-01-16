@@ -14,7 +14,7 @@ class embed_encode:
         self.embedding_table=self.get_embed_table()
     def get_embed_table(self):
         cur_dir=os.path.dirname(os.path.abspath(__file__))
-        file=os.path.join(os.path.dirname(os.path.dirname(cur_dir)),'pretrained_models/vocab/char_embeddings.pkl')
+        file=os.path.join(os.path.dirname(cur_dir),'pretrained_models/vocab/char_embeddings.pkl')
         with open(file,'rb') as f:
             return pickle.load(f)
     def encode(self,raw_string,max_length):

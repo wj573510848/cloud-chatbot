@@ -3,7 +3,8 @@
 * python 3.6
 * tensorflow=1.4
 * jieba=0.39
-* pymongo=3.7.2
+* pymongo
+* numpy
 
 #### nlu模块
 

@@ -48,6 +48,8 @@ class embed_encode:
         self.unk=self.word2vec_from_db.unk
         self.pad=self.word2vec_from_db.pad
     def encode(self,sentence_list,max_length):
+        if isinstance(sentence_list,str):
+            sentence_list=[sentence_list]
         sentence_split_list=[]
         all_words=set()
         for sentence in sentence_list:

@@ -8,6 +8,15 @@ https://ai.tencent.com/ailab/nlp/embedding.html
 import re
 import jieba
 
+import sys
+sys.path.append("../")
+from utils import basic_functions
+
+
+class vocab_from_db:
+    def __init__(self):
+        self.db=basic_functions.get_mongo_db()
+        self.collection=self.db['wordLevelVocab']
 def strQ2B(ustring):
     """全角转半角"""
     rstring = ""
@@ -21,22 +30,24 @@ def strQ2B(ustring):
     return rstring
 
 class jieba_based_tokenizer:
-    def __init__(self,vocab_file,lower=True,logger=None):
+    def __init__(self,lower=True,logger=None):
         if logger is not None:
             logger.info("initialize word level tokenizer...")
         self.unk='[UNK]'
         self.pad='[PAD]'
-        self.vocab=self.load_vocab(vocab_file)
+        self.vocab=vocab_from_db()
         self.lower=lower
+        self.unk_id=self.vocab.collection.find_one({'word':self.unk})['id']
+        self.pad_id=self.vocab.collection.find_one({'word':self.pad})['id']
         if logger is not None:
-            logger.info("vocab size:{}".format(len(self.vocab)))
+            logger.info("vocab size:{}".format(self.vocab.collection.count()))
     def tokenize(self,sentence):
         word_list=self.basic_split(sentence)
         return self.full_cut(word_list)
     def full_cut(self,word_list):
         words=[]
         for word in word_list:
-            if word in self.vocab:
+            if self.vocab.collection.find_one({'word':word}):
                 words.append(word)
             else:
                 words.extend(self.cut_by_vocab(word))
@@ -66,7 +77,8 @@ class jieba_based_tokenizer:
             end=len(word)
             status=False
             while end>start:
-                if word[start:end] in self.vocab:
+                if self.vocab.collection.find_one({'word':word[start:end]}):
+                #if word[start:end] in self.vocab:
                     new_list.append(word[start:end])
                     start=end
                     status=True
@@ -76,8 +88,6 @@ class jieba_based_tokenizer:
                 new_list=[self.unk]
                 break
         return new_list
-        
-        
             
     def basic_split(self,sentence):
         '''
@@ -98,26 +108,16 @@ class jieba_based_tokenizer:
                 res.append(s)
             else:
                 res.extend(jieba.lcut(s))
-        return [i for i in res if i]
-    def load_vocab(self,vocab_file):
-        vocab={}
-        index=0
-        with open(vocab_file,'r') as f:
-            for line in f:
-                line=line.strip()
-                if line:
-                    vocab[line]=index
-                    index+=1
-        vocab[self.pad]=index
-        index+=1
-        vocab[self.unk]=index
-        return vocab
+        res_splited = [i for i in res if i]
+        return " ".join(res_splited).split()
     def convert_tokens_to_ids(self,tokens):
         new_list=[]
-        for token in tokens:
-            if token not in self.vocab:
+        for token in tokens:    
+            res= self.vocab.collection.find_one({'word':token})
+            if not res:
+            #if token not in self.vocab:
                 print("{} not in vocab?".format(token))
-                new_list.append(self.vocab[self.unk])
+                new_list.append(self.unk_id)
             else:
-                new_list.append(self.vocab[token])
+                new_list.append(res['id'])
         return new_list

@@ -1,0 +1,5 @@
+**/__pycache__
+*.pyc_
+data_process
+pretrained_models
+main_test.py
