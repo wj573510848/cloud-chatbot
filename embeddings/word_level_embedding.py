@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jan  7 10:24:57 2019
-
-@author: wj
-"""
 #从pymongo获取词向量
 #unk与pad皆为0
 #词向量维度为200
+"""
 
 import pymongo
 import pickle
@@ -35,11 +32,10 @@ class word2vec_from_db:
             word2vec[i['word']]=pickle.loads(i['vector'])
         return word2vec
     def get_collection(self):
-        host='47.100.177.102'
+        host='127.0.0.1'
         port=27017
         client=pymongo.MongoClient(host=host,port=port)
-        db=client.introduction
-        db.authenticate('wj','aoshuowj')
+        db=client.chatDb
         self.collection=db.word2vecByTencent
 class embed_encode:
     def __init__(self,tokenizer):
