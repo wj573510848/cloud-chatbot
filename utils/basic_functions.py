@@ -5,7 +5,7 @@ Created on Tue Jan 15 17:06:50 2019
 
 @author: wj
 """
-
+import os
 import pymongo
 
 def get_mongo_db():
@@ -19,3 +19,7 @@ def read_lines(file,encoding='utf8'):
             line=line.strip()
             if line:
                 yield line
+def get_root_dir():
+    #获取项目的根目录
+    cur_dir=os.path.dirname(os.path.abspath(__file__))
+    return os.path.dirname(cur_dir)
