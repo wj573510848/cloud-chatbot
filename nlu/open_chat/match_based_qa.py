@@ -45,7 +45,7 @@ class chat_model:
         self.sentence_vec_model=sentence_encode_by_word2vec(tokenizer)
     def response(self,sentence,score=0.95,default_answer=None):
         if default_answer is None:
-            default_answer='抱歉，我还不明白你的意思。'
+            default_answer=None
         matched_question,matched_answer,q_rate=self.get_top_one_response(sentence)
         if q_rate>score:
             answer=self.regular_answer(matched_answer)

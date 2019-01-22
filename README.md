@@ -5,12 +5,11 @@
 * jieba=0.39
 * pymongo
 * numpy
-
-#### nlu模块
-
-1.基本领域
-
-weather，phone，yes，no，chat
+* dash==0.35.1 
+* dash-html-components==0.13.4 
+* dash-core-components==0.42.1  
+* dash-table==3.1.11
+* gunicorn==19.9.0
 
 #### word&char embedding
 
@@ -22,3 +21,7 @@ weather，phone，yes，no，chat
 * charactor level embedding
 	* 字级别embedding，使用bert开源中文模型： https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip
 	* 参考bert tokenization方法，增加全角、半角转换
+
+#### 支持的多轮交互对话任务
+
+weather，phone，yes，no，chat
