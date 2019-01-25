@@ -31,5 +31,5 @@ weather，phone，yes，no，chat
 
 ```mermaid
 graph TD
-a
+a-->b
 ```
