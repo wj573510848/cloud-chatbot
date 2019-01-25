@@ -25,3 +25,11 @@
 #### 支持的多轮交互对话任务
 
 weather，phone，yes，no，chat
+
+#### DM(dialog management)
+基于slot filling的对话管理系统
+
+```mermaid
+graph TD
+a
+```
