@@ -33,7 +33,27 @@
 [模型2](https://github.com/wj573510848/rnn-models-bert-models)</br>
 
 ## DM(dialog management)
-基于slot filling的对话管理系统
+基于slot filling的对话管理系统。</br>
+slot:完成一轮对话所需的必要信息，如打电话需要号码，查询知识点需要关键词等。</br>
+围绕完成某类任务需要的信息与用户进行交互。</br>
+<p align="left">
+<img width="40%" src="./tmp/dm.png" />
+<br>
+
+该模块主要任务有：
+* 账户管理（TODO:登录/验证）
+* 对话行为管理
+* 主对话逻辑管理
+* 次级对话逻辑管理
+
+## NLG(Natural Language Generation)
+自然语言生成。</br>
+DM的每一个阶段都会输出一个对话的状态，需要在这个状态的基础上与用户进行交互。</br>
+
+分为三种:
+* answer: 输出文字与用户交互
+* action: 执行某个具体的操作
+* answer & action: 执行某个具体的操作并且与用户交互
 
 ## word&char embedding
 
@@ -59,3 +79,8 @@
 * dash-core-components==0.42.1  
 * dash-table==3.1.11
 * gunicorn==19.9.0
+
+## TODO
+* 账号系统
+* web系统
+* 并发能力
