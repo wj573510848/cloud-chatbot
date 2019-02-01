@@ -28,6 +28,13 @@
 <img width="40%" src="./tmp/NLU.png" />
 <br>
 
+部分训练模型:
+[模型1](https://github.com/wj573510848/transformer-se2seq-models)
+[模型2](https://github.com/wj573510848/rnn-models-bert-models)
+
+## DM(dialog management)
+基于slot filling的对话管理系统
+
 ## word&char embedding
 
 使用两种 embedding
@@ -39,12 +46,6 @@
 	* 字级别embedding，使用bert开源中文模型： https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip
 	* 参考bert tokenization方法，增加全角、半角转换
 
-## 支持的多轮交互对话任务
-
-weather，phone，yes，no，chat
-
-## DM(dialog management)
-基于slot filling的对话管理系统
 
 ## 基本环境
 
