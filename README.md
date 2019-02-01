@@ -5,6 +5,7 @@
 <p align="center">
 <img width="70%" src="./tmp/introduction.png" />
 <br>
+
 ### word&char embedding
 
 使用两种 embedding
