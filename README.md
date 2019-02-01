@@ -17,7 +17,7 @@
 ## NLU（Natural Language Understanding）
 自然语义理解。
 <p align="left">
-<img width="30%" src="./tmp/NLU.png" />
+<img width="40%" src="./tmp/NLU.png" />
 <br>
 
 ## word&char embedding
