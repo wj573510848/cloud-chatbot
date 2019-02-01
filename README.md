@@ -1,9 +1,9 @@
 
 ### introduction
-任务驱动聊天框架。
+任务驱动聊天框架。</br>
 将聊天细分为多个任务，不同的任务使用不同的对话逻辑，建立以完成某个具体任务为目标的会话场景。
-<p align="center">
-<img width="70%" src="./tmp/introduction.png" />
+<p align="left">
+<img width="30%" src="./tmp/introduction.png" />
 <br>
 
 ### word&char embedding
