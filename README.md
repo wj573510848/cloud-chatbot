@@ -1,7 +1,7 @@
 
-### introduction
-任务驱动聊天框架。</br>
-将聊天细分为多个任务，不同的任务使用不同的对话逻辑，建立以完成某个具体任务为目标的会话场景。
+## introduction
+任务驱动型聊天框架。</br>
+将聊天细分为多个任务，不同的任务使用不同的对话逻辑，建立以完成某个具体任务为目标的会话场景。</br>
 <p align="left">
 <img width="50%" src="./tmp/introduction.png" />
 <br>
@@ -14,7 +14,13 @@
 * NLG: 自然语义生成。确定每轮会话后的执行动作
 * 输出: 文本（与用户交互）或动作（如打电话，开灯等）
 
-### word&char embedding
+## NLU（Natural Language Understanding）
+自然语义理解。
+<p align="left">
+<img width="50%" src="./tmp/NLU.png" />
+<br>
+
+## word&char embedding
 
 使用两种 embedding
 
@@ -25,14 +31,14 @@
 	* 字级别embedding，使用bert开源中文模型： https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip
 	* 参考bert tokenization方法，增加全角、半角转换
 
-### 支持的多轮交互对话任务
+## 支持的多轮交互对话任务
 
 weather，phone，yes，no，chat
 
-### DM(dialog management)
+## DM(dialog management)
 基于slot filling的对话管理系统
 
-### 基本环境
+## 基本环境
 
 * python 3.6
 * tensorflow=1.4
