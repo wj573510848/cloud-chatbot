@@ -28,9 +28,9 @@
 <img width="40%" src="./tmp/NLU.png" />
 <br>
 
-部分训练模型:
-[模型1](https://github.com/wj573510848/transformer-se2seq-models)
-[模型2](https://github.com/wj573510848/rnn-models-bert-models)
+部分训练模型:<br>
+[模型1](https://github.com/wj573510848/transformer-se2seq-models)</br>
+[模型2](https://github.com/wj573510848/rnn-models-bert-models)</br>
 
 ## DM(dialog management)
 基于slot filling的对话管理系统
