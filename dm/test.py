@@ -15,6 +15,7 @@ sys.path.append("../")
 import json
 from dm.profile.user_profile import profile as user_profile
 from dm import dm_tools
+from dm import dm_models
 from dm.nlg import nlg as nlg_template
 import collections
 import logging
@@ -40,7 +41,8 @@ class dm:
                 if cur_user_profile.user_state['dialog_level']==0:
                     if cur_user_profile.user_state['action_type']=='normal':
                         self.do_slot_check(cur_user_profile)
-                self.do_nlg(cur_user_profile,cur_nlg)
+        self.do_nlg(cur_user_profile,cur_nlg)
+        self.action(cur_user_profile)
         print(json.dumps(cur_user_profile.user_state))
     def do_slot_check(self,user_profile):
         #根据输入的slot更新对话状态
@@ -65,18 +67,22 @@ class dm:
                     user_profile.user_state['outputs']['quene'].append(key)
                 self.logger.info("add {} to dialog quene!".format(key))
     def do_nlg(self,user_profile,cur_nlg):
+        #1.异常情况
+        
         state=user_profile.user_state
         if state['dialog_level']==0:
             #判断是否有对话任务
             if len(state['outputs']['quene'])>0:
-                task=a.pop()
+                task=state['outputs']['quene'].pop()
+                dm_models.slot_confirm(user_profile,cur_nlg,task)
                 #进入对话任务
             else:
                 if len(state['outputs']['filling_slots'])>0:
                     pass
         if state['dialog_level']==1:
             pass
-                
+    def action(self,user_profile):
+        
 if __name__=="__main__":
     model=dm()
     inputs={'nlu':
